@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tyapik", "Tyapik\Tyapik.csproj", "{14531875-18C4-4049-B77E-A481D86DF140}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TyapikTester", "TyapikTester\TyapikTester.csproj", "{64A7197F-C5CC-4E84-88A8-61328F654C0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14531875-18C4-4049-B77E-A481D86DF140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14531875-18C4-4049-B77E-A481D86DF140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14531875-18C4-4049-B77E-A481D86DF140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14531875-18C4-4049-B77E-A481D86DF140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64A7197F-C5CC-4E84-88A8-61328F654C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64A7197F-C5CC-4E84-88A8-61328F654C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64A7197F-C5CC-4E84-88A8-61328F654C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64A7197F-C5CC-4E84-88A8-61328F654C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
