@@ -93,7 +93,13 @@ public class Tester
     [TestMethod]
     public void DeclarationFunction_ValidExpresssion_Parser()
     {
-        const string code = "function f() { \n a=3; \n echo $1 + $a; \n let c=$1+$a; \n echo $c; \n }; \n f 2;";
+        const string code = @"function f() {
+	a=3;
+	echo $1+$a;
+	let c=$1+$a;
+	echo $c;
+};
+f 2;";
         
         var actual = "";
         var lexer = new Lexer(code, true);
@@ -122,5 +128,32 @@ public class Tester
             actual = e.Message;
         }
         Assert.AreNotEqual("", actual);
+    }
+    
+    
+    [TestMethod]
+    public void UndefFactparam_Semantic()
+    {
+        var codes = new[]
+        {
+            "echo $A;",
+            "let c=$1+$c",
+            "A=( $d )"
+        };
+        
+        var actual = "";
+        foreach (var code in codes)
+        {
+            var lexer = new Lexer(code, true);
+            var parser = new Parser(lexer);
+            try {
+                var resultParse = parser.Parse();
+                Console.WriteLine(resultParse.ShowStr());
+                Semantic.Check(resultParse);
+            } catch (Exception e) {
+                actual = e.Message;
+            }
+            Assert.AreNotEqual("", actual);
+        }
     }
 }
