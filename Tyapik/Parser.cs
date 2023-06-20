@@ -89,8 +89,6 @@ public class Parser
 
     public void Error(string message)
     {
-        //Console.WriteLine($"Parser error: {message} in position {_lexer.Row}, {_lexer.Col}");
-        //Environment.Exit(1);
         throw new Exception($"Parser error: {message} in position {_lexer.Row}, {_lexer.Col}");
     }
 
@@ -125,6 +123,9 @@ public class Parser
             case Lexem.DOLLAR:
             {
                 _lexer.GetNextToken();
+                if (_lexer.State == Lexem.INTNUMBER)
+                    _lexer.State = Lexem.IDENTIFIER;
+                
                 return Term();
                 //return new Node(FUNCTION, childrens: new List<Node> {identifier, factparameters});
             }
@@ -453,8 +454,15 @@ public class Parser
 
                 break;
             }
-            
+
             case Lexem.DOLLAR:
+            {
+                _lexer.GetNextToken();
+                if (_lexer.State == Lexem.INTNUMBER)
+                    _lexer.State = Lexem.IDENTIFIER;
+                
+                return ZeroBlock();
+            }
             case Lexem.LET:
             {
                 _lexer.GetNextToken();
