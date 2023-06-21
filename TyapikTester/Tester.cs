@@ -11,7 +11,7 @@ public class Tester
         const string code = "let f=1-+2";
         
         var actual = "";
-        var lexer = new Lexer(code, true);
+        var lexer = new Lexer(code);
         var parser = new Parser(lexer);
         try {
             var resultParse = parser.Parse();
@@ -28,7 +28,7 @@ public class Tester
         const string code = "let f=1-2+2";
         
         var actual = "";
-        var lexer = new Lexer(code, true);
+        var lexer = new Lexer(code);
         var parser = new Parser(lexer);
         try {
             var resultParse = parser.Parse();
@@ -45,7 +45,7 @@ public class Tester
         const string code = "A=(2 4 5~ 6 4);";
         
         var actual = "";
-        var lexer = new Lexer(code, true);
+        var lexer = new Lexer(code);
         var parser = new Parser(lexer);
         try {
             var resultParse = parser.Parse();
@@ -62,7 +62,7 @@ public class Tester
         const string code = "A=(2 4 5 6 4);";
         
         var actual = "";
-        var lexer = new Lexer(code, true);
+        var lexer = new Lexer(code);
         var parser = new Parser(lexer);
         try {
             var resultParse = parser.Parse();
@@ -79,7 +79,7 @@ public class Tester
         const string code = "echo $A;";
         
         var actual = "";
-        var lexer = new Lexer(code, true);
+        var lexer = new Lexer(code);
         var parser = new Parser(lexer);
         try {
             var resultParse = parser.Parse();
@@ -102,7 +102,7 @@ public class Tester
 f 2;";
         
         var actual = "";
-        var lexer = new Lexer(code, true);
+        var lexer = new Lexer(code);
         var parser = new Parser(lexer);
         try {
             var resultParse = parser.Parse();
@@ -119,7 +119,7 @@ f 2;";
         const string code = "а как вообще 233 =+ sadв ж/\n\ngfb \n rtyebtressertg=g5-b32gfv4\\-=98-	213авё12в231-vbc./dxRWEFGVCawWA+_ \n -./.CXZW\\/78984```21243!#$^&&^*&)(_+-=\\\\\\\r\t\\y\\u\\h\\fgd\r";
         
         var actual = "";
-        var lexer = new Lexer(code, true);
+        var lexer = new Lexer(code);
         var parser = new Parser(lexer);
         try {
             var resultParse = parser.Parse();
@@ -144,7 +144,7 @@ f 2;";
         var actual = "";
         foreach (var code in codes)
         {
-            var lexer = new Lexer(code, true);
+            var lexer = new Lexer(code);
             var parser = new Parser(lexer);
             try {
                 var resultParse = parser.Parse();
@@ -155,5 +155,61 @@ f 2;";
             }
             Assert.AreNotEqual("", actual);
         }
+    }
+    
+    [TestMethod]
+    public void Function_CodeGenerator()
+    {
+        const string code = @"function f() {
+	a=3;
+	echo $1+$a;
+	let c=$1+$a;
+	echo $c;
+};
+f 2;";
+        var actual = "";
+        var lexer = new Lexer(code);
+        var parser = new Parser(lexer);
+        var resultParse = parser.Parse();
+        try {
+            Console.WriteLine(CodeGenerator.Get(resultParse));
+        } catch (Exception e) {
+            actual = e.Message;
+        }
+        Assert.AreEqual("", actual);
+    }
+    
+    
+    [TestMethod]
+    public void List_CodeGenerator()
+    {
+        const string code = "A=(2 4 5 6 4);";
+        var actual = "";
+        var lexer = new Lexer(code);
+        var parser = new Parser(lexer);
+        var resultParse = parser.Parse();
+        try {
+            Console.WriteLine(CodeGenerator.Get(resultParse));
+        } catch (Exception e) {
+            actual = e.Message;
+        }
+        Assert.AreEqual("", actual);
+    }
+    
+    
+    [TestMethod]
+    public void Arifmmetic_CodeGenerator()
+    {
+        const string code = "let f=1-2+2";
+        var actual = "";
+        var lexer = new Lexer(code);
+        var parser = new Parser(lexer);
+        var resultParse = parser.Parse();
+        try {
+            Console.WriteLine(CodeGenerator.Get(resultParse));
+        } catch (Exception e) {
+            actual = e.Message;
+        }
+        Assert.AreEqual("", actual);
     }
 }

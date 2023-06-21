@@ -10,9 +10,9 @@ try
         "list", //2
         "def",
     };
-    const int testNumber = 3;
+    const int testNumber = 1;
     var file = tests[testNumber] + ".txt";
-    var l = new Lexer(file);
+    var l = new Lexer( new StreamReader(file));
     var result = "\0";
     var state = -1;
     while (state != Lexem.EOF)
@@ -22,11 +22,14 @@ try
     }
 
     Console.WriteLine(result);
-    l = new Lexer(file);
+    l = new Lexer(new StreamReader(file));
 
     var parser = new Parser(l);
     var resultParse = parser.Parse();
     Console.WriteLine(resultParse.ShowStr());
+
+    var code = CodeGenerator.Get(resultParse);
+    Console.WriteLine(code);
 }
 catch (Exception e) {
     Console.WriteLine(e.Message);

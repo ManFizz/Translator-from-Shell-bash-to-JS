@@ -11,7 +11,7 @@ public class Lexer
     public int Row, Col;
     public string Value = "\0";
 
-    public Lexer(string code, bool c) //parametr "c" for different constructors
+    public Lexer(string code) //parametr "c" for different constructors
     {
         var path = Path.GetTempFileName();
         var file = new StreamWriter(path);
@@ -20,10 +20,9 @@ public class Lexer
         
         _file = new StreamReader(path);
     }
-
-    public Lexer(string file)
+    public Lexer(StreamReader sr)
     {
-        _file = new StreamReader(file);
+        _file = sr;
     }
     
     private void Error(string message)
