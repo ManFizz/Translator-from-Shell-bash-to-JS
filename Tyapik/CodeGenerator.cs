@@ -34,7 +34,8 @@ public static class CodeGenerator
         {
             case Parser.PROGRAM:
             {
-                Switcher(node.childrens[0], prefix); //nothing to do
+                foreach (var children in node.childrens)
+                    Switcher(children, prefix);
                 break;
             }
             case Parser.LIST:
