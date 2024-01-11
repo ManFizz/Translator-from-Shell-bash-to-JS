@@ -9,6 +9,7 @@
 		
 		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<RootNamespace>Tyapik</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

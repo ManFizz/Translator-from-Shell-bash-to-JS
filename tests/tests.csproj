@@ -9,6 +9,7 @@
 		
 		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<RootNamespace>TyapikTester</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Tyapik\Tyapik.csproj" />
+      <ProjectReference Include="..\src\src.csproj" />
     </ItemGroup>
 
 </Project>

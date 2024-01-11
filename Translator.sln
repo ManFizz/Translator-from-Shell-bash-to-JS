@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tyapik", "Tyapik\Tyapik.csproj", "{14531875-18C4-4049-B77E-A481D86DF140}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src", "src\src.csproj", "{14531875-18C4-4049-B77E-A481D86DF140}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TyapikTester", "TyapikTester\TyapikTester.csproj", "{64A7197F-C5CC-4E84-88A8-61328F654C0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj", "{64A7197F-C5CC-4E84-88A8-61328F654C0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
