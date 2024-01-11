@@ -44,4 +44,9 @@ public class Node {
     {
         return ShowStr();
     }
+
+    public string GetPattern()
+    {
+        return Parser.PRESENTATION[pattern];
+    }
 }

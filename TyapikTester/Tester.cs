@@ -212,4 +212,42 @@ f 2;";
         }
         Assert.AreEqual("", actual);
     }
+    
+    
+    [TestMethod]
+    public void Function_Optimizer()
+    {
+        const string code = @"function m() {
+	l=4;
+};
+function f() {
+    b=4;
+	a=3;
+	echo $1+$a;
+	let c=$1+$a;
+	echo $c;
+};
+f 2;";
+        var actual = "";
+        var lexer = new Lexer(code);
+        var parser = new Parser(lexer);
+        var resultParse = parser.Parse();
+        try {
+            Optimizer.Optimize(resultParse);
+        } catch (Exception e) {
+            actual = e.Message;
+        }
+
+        var result = CodeGenerator.Get(resultParse);
+        Console.WriteLine(result);
+        Assert.AreEqual("function f() \n" +
+                        "{\n" +
+                        "\tvar a = 3;\n" +
+                        "\tconsole.log(arguments[0] + a);\n" +
+                        "\tvar c = arguments[0] + a;\n" +
+                        "\tconsole.log(c);\n" +
+                        "}\n" +
+                        "f(2);\n", result);
+        Assert.AreEqual("", actual);
+    }
 }
